@@ -37,12 +37,14 @@ html{
 }
 
 .pass-hist-card{
+    box-sizing: border-box;
     max-width: 430px;
     flex: 1 1 auto;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
+    padding: 2rem;
 }
 
 #pass-field{
@@ -71,14 +73,21 @@ html{
 }
 
 .pass-hist-title{
+    white-space: nowrap;
     font-family: "Inter", sans-serif;
     font-weight: bold;
     font-size: 1.2rem;
     color: white;
-    text-align: left;
-
+    align-self: flex-start;
+    margin: 0;
 }
 
+.hist-list-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row nowrap;
+}
 
 
 
