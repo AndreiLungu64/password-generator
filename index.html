@@ -17,7 +17,7 @@
 <body>
     <main>
         <section>
-            <h1 class="page-title">Password Generator</h1>
+            <h1 class="page-title">Random Password Generator</h1>
         </section>
         <section class="parent-container">
 
@@ -49,7 +49,7 @@
                     </div>
                     <div class="settings">
                         <div>
-                            <input type="radio" id="toSay" name="pass-format" value="toSay">
+                            <input class="radio-style" type="radio" id="toSay" name="pass-format" value="toSay">
                             <label for="toSay">Easy to say</label>
                         </div>
                         <div>
@@ -84,12 +84,17 @@
                 </section>
                 <section class="pass-stats">
                     <div class="stats-bar">
-                        <p class="stats-text">Strength:</p> <p class="stats-text">strong</p>
+                        <p class="stats-text">Strength:</p>
+                        <p class="stats-text">strong</p>
                     </div>
                     <div class="stats-bar">
-                        <p class="stats-text">Time to bruteforce:</p> <p class="stats-text">33 years</p>
+                        <p class="stats-text">Time to bruteforce:</p>
+                        <p class="stats-text">33 years</p>
                     </div>
                 </section>
+                <p class="guide-text">*Bruteforce time refers to the estimated time it would take for an attacker to
+                    guess a password by trying every possible combination. The complexity and length of the password
+                    directly influence this duration.</p>
             </div>
             <div class="pass-hist-card card">
                 <div>
@@ -134,7 +139,8 @@
             </div>
         </section>
         <section>
-            <p id="footer-text">This tool uses JavaScript to generate passwords on your device only (client side). These
+            <p class="guide-text">This tool uses JavaScript to generate passwords on your device only (client side).
+                These
                 passwords are not transmitted to our servers.</p>
         </section>
     </main>

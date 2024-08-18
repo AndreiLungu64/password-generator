@@ -1,261 +1,336 @@
-html{
-    background-color: #0E0D13;
+:root {
+  --active-radio-color: #48607d;
+  --active-checkbox-color:#5F487D;
 }
 
-.page-title{
-    text-align: center;
-    font-family: "Inter", sans-serif;
-    font-weight: bold;
-    font-size: 2rem;
-    color: white;
-    margin: 1.5rem 2rem;
-    margin-bottom: 2rem;
+html {
+  background-color: #0e0d13;
 }
 
-.parent-container{
-    margin: 0 7rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
+.page-title {
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  color: white;
+  margin: 1.5rem 2rem;
+  margin-bottom: 2rem;
 }
 
-.card{
-    background-color: #24232B;
-    border-radius: 0.15rem;
-    min-height: 540px;
+.parent-container {
+  margin: 0 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
-.pass-gen-card{
-    width: auto;
-    max-width: 580px;
-    flex: 1 1 auto;
-    display:flex;
-    justify-content: start;
-    align-items: center;
-    flex-flow: column nowrap;
-    padding: 0 3rem;
+.card {
+  background-color: #24232b;
+  border-radius: 0.15rem;
+  min-height: 540px;
 }
 
-.pass-hist-card{
-    box-sizing: border-box;
-    max-width: 380px;
-    flex: 1 1 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 2rem;
+.pass-gen-card {
+  width: auto;
+  max-width: 580px;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-flow: column nowrap;
+  padding: 0 3rem;
 }
 
-#pass-field{
-    width:100%;
-    height: 64px; 
-    background-color: #BDE2E2;
-    border-radius: 0.3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 3rem;
+.pass-hist-card {
+  box-sizing: border-box;
+  max-width: 380px;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
 }
 
-.pass-output{
-    background: transparent;
-    border: none;
-    min-width: 20rem;
-    width: 100%;
-    height: 70%;
-    margin: 0 1rem;
+#pass-field {
+  width: 100%;
+  height: 64px;
+  background-color: #bde2e2;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
 }
 
-.action-btns-container{
-    white-space: nowrap;
-    margin-right: 1rem;
+.pass-output {
+  background: transparent;
+  border: none;
+  min-width: 20rem;
+  width: 100%;
+  height: 70%;
+  margin: 0 1rem;
 }
 
-.pass-hist-title{
-    white-space: nowrap;
-    font-family: "Inter", sans-serif;
-    font-weight: bold;
-    font-size: 1.4rem;
-    color: white;
-    align-self: flex-start;
-    margin: 0;
-    margin-bottom: 1rem;
+.action-btns-container {
+  white-space: nowrap;
+  margin-right: 1rem;
 }
 
-.hist-list-container{
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-flow: row nowrap;
-    gap: 3rem;
+.pass-hist-title {
+  white-space: nowrap;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: white;
+  align-self: flex-start;
+  margin: 0;
+  margin-bottom: 1rem;
 }
 
-.title{
-    font-family: "Inter", sans-serif;
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: white;
-    align-self: flex-start;
-    text-decoration:underline;
-    margin: 0;
-    margin-bottom: 1rem;
+.hist-list-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: row nowrap;
+  gap: 3rem;
+}
+
+.title {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: white;
+  align-self: flex-start;
+  text-decoration: underline;
+  margin: 0;
+  margin-bottom: 1rem;
 }
 
 .pass-date-list {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .pass-date-list li {
-    font-size: 0.9rem;
-    list-style-type: none;
-    font-weight: 300;
-    color: white;
-    margin-bottom: 1.1rem;
-    font-family: "Inter", sans-serif;
-    font-size: 0.9rem;
-    font-weight: 200;
+  font-size: 0.9rem;
+  list-style-type: none;
+  font-weight: 300;
+  color: white;
+  margin-bottom: 1.1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 200;
 }
-.pass-settings{
-    width: 100%;
-    margin-top: 1rem;
-}
-
-.pass-len-text-container{
-    box-sizing: border-box;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-
+.pass-settings {
+  width: 100%;
+  margin-top: 1rem;
 }
 
-#char-len-value{
-    color: #74E3E3;
+.pass-len-text-container {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.char-len{
-    font-weight: 450;
-    margin-bottom: 1.1rem;
-    font-family: "Inter", sans-serif;
-    font-size: 1.1rem;
-    color: white;
+#char-len-value {
+  color: #74e3e3;
 }
 
-/* ////////////////////////////////////////////// */
-.slider{
-    accent-color: #6E6E6E;
-    width: 100%;
-    height: 10px;
+.char-len {
+  font-weight: 450;
+  margin-bottom: 1.1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  color: white;
+}
+
+/* //////////////////Custom Slider///////////////////// */
+.slider {
+  accent-color: #6e6e6e;
+  width: 100%;
+  height: 10px;
 }
 
 /*********** Baseline, reset styles ***********/
 input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-    background: transparent;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 1rem;
 }
 
 /* Removes default focus */
 input[type="range"]:focus {
-    outline: none;
+  outline: none;
 }
 
 /******** Chrome, Safari, Opera and Edge Chromium styles ********/
 /* slider track */
 input[type="range"]::-webkit-slider-runnable-track {
-    -webkit-appearance: none;
-    height: 0.7rem;
-    border-radius: 0.5rem;
+  -webkit-appearance: none;
+  height: 0.7rem;
+  border-radius: 0.5rem;
 }
 
 /* slider thumb */
 input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    margin-top: -6.4px; /* Centers thumb on the track */
-    background-color: #e6e5e9;
-    border-radius: 1rem;
-    height: 1.5rem;
-    width: 1.5rem;
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -6.4px; /* Centers thumb on the track */
+  background-color: #e6e5e9;
+  border-radius: 1rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 input[type="range"]:focus::-webkit-slider-thumb {
-    outline: 3px solid #e6e5e9;
-    outline-offset: 0.125rem;
+  outline: 3px solid #e6e5e9;
+  outline-offset: 0.125rem;
 }
 
 /*********** Firefox styles ***********/
 /* slider track */
 input[type="range"]::-moz-range-track {
-    height: 0.7rem;
-    border-radius: 0.5rem;
+  height: 0.7rem;
+  border-radius: 0.5rem;
 }
 
 /* slider thumb */
 input[type="range"]::-moz-range-thumb {
-    background-color: #e6e5e9;
-    border: none; /*Removes extra border that FF applies*/
-    border-radius: 1rem;
-    height: 1.5rem;
-    width: 1.5rem;
+  background-color: #e6e5e9;
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 1rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
-input[type="range"]:focus::-moz-range-thumb{
-    outline: 3px solid #e6e5e9;
-    outline-offset: 0.125rem;
+input[type="range"]:focus::-moz-range-thumb {
+  outline: 3px solid #e6e5e9;
+  outline-offset: 0.125rem;
 }
 /* ////////////////////////////////////////////// */
 
-.settings{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin-top: 1rem;
+/* ///////////////Custom Radio Button/////////////// */
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  font: inherit;
+  color: white;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 0.15rem solid white;
+  border-radius: 50%;
+  transform: translateY(-0.6rem);
+  display: grid;
+  place-content: center;
 }
 
-div label{
-    font-weight: 300;
-    color: white;
-    margin-bottom: 1.1rem;
-    font-family: "Inter", sans-serif;
-    font-size: 1rem;
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  background-color: var(--active-radio-color);
 }
 
-.pass-stats{
-    width: 100%;
-    display: flex;
-    flex-flow: column nowrap;
-    margin-top: 2rem;
-    gap: 1.4rem;
+input[type="radio"]:checked::before {
+  transform: scale(1);
 }
 
-.stats-bar{
-    box-sizing: border-box;
-    width: 100%;
-    height: 3.3rem;
-    background-color: #9CF087;
-    border-radius: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 1rem;
+.settings * {
+  display: flex;
+  align-items: center;
 }
 
-.stats-text{
-        color: #29373B;
-        font-weight: bold;
-        font-family: "Inter", sans-serif;
-        font-size: 1rem;
+div label {
+  font-weight: 300;
+  color: white;
+  margin-bottom: 1.1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  margin-left: 0.45rem;
+}
+/* //////////////////////////////////////////////// */
+
+/* ///////////////Custom Radio Button/////////////// */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  font: inherit;
+  color: white;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 0.15rem solid white;
+  border-radius: 10%;
+  transform: translateY(-0.6rem);
+  display: grid;
+  place-content: center;
 }
 
-#footer-text{
-    margin-top: 1.8rem;
-    font-family: "Inter", sans-serif;
-    font-size: 0.65rem;
-    color: white;
-    text-align: center;
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 10%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  background-color: var(--active-checkbox-color);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+/* //////////////////////////////////////////////// */
+
+.pass-settings > .settings:nth-child(3) {
+  margin-top: 1.8rem;
+}
+
+.settings {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.pass-stats {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  margin-top: 2rem;
+  gap: 1.4rem;
+}
+
+.stats-bar {
+  box-sizing: border-box;
+  width: 100%;
+  height: 3.3rem;
+  background-color: #83eea8;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.stats-text {
+  color: #29373b;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+}
+
+.guide-text {
+  margin-top: 1.8rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.65rem;
+  color: white;
+  text-align: center;
 }
