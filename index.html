@@ -41,8 +41,8 @@
                 </div>
                 <section class="pass-settings">
                     <div class="pass-len-text-container">
-                        <p>Character Length</p>
-                        <p>9</p>
+                        <p class="char-len">Character Length</p>
+                        <p id="char-len-value" class="char-len">9</p>
                     </div>
                     <div class="slidecontainer">
                         <input type="range" min="1" max="50" value="50" class="slider" id="myRange">
@@ -64,27 +64,31 @@
 
                     <div class="settings">
                         <div>
-                            <input type="checkbox" id="html" name="fav_language" value="HTML">
-                            <label for="html">Uppercase</label>
+                            <input type="checkbox" id="upper" name="fav_language" value="upper">
+                            <label for="upper">Uppercase</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="css" name="fav_language" value="CSS">
-                            <label for="css">Lowercase</label>
+                            <input type="checkbox" id="lower" name="fav_language" value="lower">
+                            <label for="lower">Lowercase</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="javascript" name="fav_language" value="JavaScript">
-                            <label for="javascript">Digits</label>
+                            <input type="checkbox" id="digits" name="fav_language" value="digits">
+                            <label for="digits">Digits</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="symbols" name="fav_language" value="Symbols">
+                            <input type="checkbox" id="symbols" name="fav_language" value="symbols">
                             <label for="symbols">Symbols</label>
                         </div>
                     </div>
 
                 </section>
                 <section class="pass-stats">
-                    <div class="stats-bar"></div>
-                    <div class="stats-bar"></div>
+                    <div class="stats-bar">
+                        <p class="stats-text">Strength:</p> <p class="stats-text">strong</p>
+                    </div>
+                    <div class="stats-bar">
+                        <p class="stats-text">Time to bruteforce:</p> <p class="stats-text">33 years</p>
+                    </div>
                 </section>
             </div>
             <div class="pass-hist-card card">
