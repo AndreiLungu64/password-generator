@@ -75,6 +75,11 @@ html {
   margin: 0 1rem;
 }
 
+input[type="text"]{
+    font-size: 1.3rem;
+    font-family: "Inter", sans-serif;
+}
+
 .action-btns-container {
   white-space: nowrap;
   margin-right: 1rem;
