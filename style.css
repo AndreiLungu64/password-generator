@@ -49,11 +49,13 @@ html {
 .pass-hist-card {
   box-sizing: border-box;
   max-width: 380px;
+  max-height: 550px;
   flex: 1 1 auto;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 0 3rem;
+  align-items: flex-start;
+  padding: 2rem 2.8rem;
+  overflow-y: scroll;
 }
 
 #pass-field {
@@ -75,10 +77,10 @@ html {
   margin: 0 1rem;
 }
 
-input[type="text"]{
-    font-size: 1.3rem;
-    font-family: "Inter", sans-serif;
-    outline: none;
+input[type="text"] {
+  font-size: 1.3rem;
+  font-family: "Inter", sans-serif;
+  outline: none;
 }
 
 .action-btns-container {
@@ -86,9 +88,9 @@ input[type="text"]{
   margin-right: 1rem;
 }
 
-.action-btns-container > svg{
-    user-select: none;
-    cursor: pointer;
+.action-btns-container > svg {
+  user-select: none;
+  cursor: pointer;
 }
 
 .pass-hist-title {
@@ -140,6 +142,20 @@ input[type="text"]{
   margin-bottom: 1.1rem;
 }
 
+.pass-date-list li {
+  max-width: 10rem;
+  overflow-y: auto;
+  white-space: nowrap;
+  width: fit-content;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
 .pass-settings {
   width: 100%;
   margin-top: 1rem;
@@ -186,7 +202,7 @@ input[type="range"]:focus {
 /* slider track */
 input[type="range"]::-webkit-slider-runnable-track {
   -webkit-appearance: none; /* Override default look */ /*reapplying for each browser specific elements is necessarily*/
-  height: var(--track-height);;
+  height: var(--track-height);
   border-radius: 0.5rem;
 }
 
@@ -337,26 +353,6 @@ input[type="checkbox"]:checked::before {
   font-weight: bold;
   font-family: "Inter", sans-serif;
   font-size: 1rem;
-}
-
-.stats-color-very-strong{
-    background-color: #83EEA8;
-}
-
-.stats-color-strong{
-    background-color: #9CF087;
-}
-
-.stats-color-good{
-    background-color: #CFF087;
-}
-
-.stats-color-weak{
-    background-color: #F4C57F;
-}
-
-.stats-color-very-weak{
-    background-color: #F4947F;
 }
 
 .guide-text {

@@ -10,12 +10,13 @@ const coppyPassBtn = document.querySelector(".action-btns-container").lastElemen
 const passField = document.querySelector(".pass-output");
 const strengthBar = document.querySelector(".strength-bar");
 const bruteBar = document.querySelector(".brute-bar");
-
-console.log(generatePassBtn);
-console.log(coppyPassBtn);
+const passList = document.querySelector(".pass-list");
+const dateList = document.querySelector(".date-list");
 
 let paswordLength = 0;
 let charGroupsToUse = [0, 1, 2, 3];
+const passHistory = [];
+let currentPassword = "";
 
 function updateRangeBackground() {
   const value = ((rangeInput.value - rangeInput.min) / (rangeInput.max - rangeInput.min)) * 100;
@@ -49,9 +50,12 @@ function generatePassword(len, charTypes) {
   const getRandomInt = (max) => Math.floor(Math.random() * max);
   while (len--) password += groupToUse[getRandomInt(groupToUse.length - 1)];
 
+  passHistory.push(password);
+  currentPassword = password;
   return password;
 }
 
+//TODO  updateSecurityColor() is called by itslef and also inside updatePassword(). Call it separately each time for better readability
 function updateSecurityColor(passLen) {
   const securityLevels = [
     { maxLen: 6, strength: "Very Weak", time: "Seconds to minutes", color: "#F88970" },
@@ -116,7 +120,26 @@ checkboxContainer.addEventListener("click", function (e) {
   }
 });
 
-generatePassBtn.addEventListener("click", updatePassword);
+function addToHistoryList() {
+  console.log(currentPassword);
+  const passLi = document.createElement("li");
+  const dateLi = document.createElement("li");
+  passLi.textContent = currentPassword;
+  const date = new Date();
+  const options = {
+    hour: "numeric",
+    minute: "numeric",
+  };
+  dateLi.innerHTML = new Intl.DateTimeFormat("en-US", options).format(date);
+  dateList.appendChild(dateLi);
+  passList.appendChild(passLi);
+}
+
+generatePassBtn.addEventListener("click", function () {
+  updatePassword();
+});
+
 coppyPassBtn.addEventListener("click", function () {
   navigator.clipboard.writeText(passField.value);
+  addToHistoryList();
 });
