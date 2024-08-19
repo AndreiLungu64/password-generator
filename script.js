@@ -49,9 +49,7 @@ function updatePassword() {
 }
 
 function calcCharGroupsToUse() {
-  return Array.from(checkboxes)
-    .map((cb, i) => (cb.checked ? i : -1))
-    .filter((i) => i != -1);
+  return Array.from(checkboxes).map((cb, i) => (cb.checked ? i : -1)).filter((i) => i != -1);
 }
 
 function disableCbox(charTypes) {
@@ -71,19 +69,20 @@ radioContainer.addEventListener("click", function (e) {
   if (e.target.type === "radio") {
     checkboxes.forEach((el) => (el.checked = false));
     checkboxes.forEach((el, i) => (el.checked = selectedValues.includes(i)));
-    disableCbox(calcCharGroupsToUse());
+    charGroupsToUse = calcCharGroupsToUse();
+    disableCbox(charGroupsToUse);
     updatePassword();
   }
 });
 
 checkboxContainer.addEventListener("click", function (e) {
-  if (e.target.type === "checkbox") {
-    if (e.target.checked) charGroupsToUse.push(Number(e.target.value));
-    else charGroupsToUse.splice(charGroupsToUse.indexOf(Number(e.target.value)), 1);
-
-    console.log(charGroupsToUse);
-    if (charGroupsToUse.length === 1) Array.from(checkboxes)[charGroupsToUse[0]].disabled = true;
-    else Array.from(checkboxes).forEach((cb) => (cb.disabled = false));
-    updatePassword();
-  }
-});
+    if (e.target.type === "checkbox") {
+      if (e.target.checked) charGroupsToUse.push(Number(e.target.value));
+      else charGroupsToUse.splice(charGroupsToUse.indexOf(Number(e.target.value)), 1);
+  
+      console.log(charGroupsToUse);
+      if (charGroupsToUse.length === 1) Array.from(checkboxes)[charGroupsToUse[0]].disabled = true;
+      else Array.from(checkboxes).forEach((cb) => (cb.disabled = false));
+      updatePassword();
+    }
+  });
