@@ -6,7 +6,7 @@ const checkboxContainer = document.querySelectorAll(".settings")[1];
 const radios = document.querySelectorAll('input[type="radio"]');
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 let paswordLength = 0;
-let charGroupsToUse = 0;
+let charGroupsToUse = [];
 
 function updateRangeBackground() {
   const value = ((rangeInput.value - rangeInput.min) / (rangeInput.max - rangeInput.min)) * 100;
@@ -18,7 +18,7 @@ function initialise() {
   charLenLabel.innerText = rangeInput.value;
   radios[radios.length - 1].checked = true;
   checkboxes.forEach((el) => (el.checked = true));
-  passOutput.value = generatePassword(8, 3);
+  passOutput.value = generatePassword(8, [0, 1, 2]);
 }
 initialise();
 
@@ -33,7 +33,7 @@ function generatePassword(len, charTypes) {
 
   let groupToUse = [];
   groups.forEach((group, i) => {
-    if (i <= charTypes) groupToUse = groupToUse.concat(group);
+    if (charTypes.includes(i)) groupToUse = groupToUse.concat(group);
   });
 
   const getRandomInt = (max) => Math.floor(Math.random() * max);
@@ -49,13 +49,14 @@ function updatePassword() {
   }
 
 function calcCharGroupsToUse(){
-    return Array.from(checkboxes).filter((cb) => cb.checked).length - 1;
+    console.log(Array.from(checkboxes).map((cb, i) => cb.checked ? i : -1).filter(i => i != -1));
+    return Array.from(checkboxes).map((cb, i) => cb.checked ? i : -1).filter(i => i != -1);
 }
 
 function disableCbox(charTypes) {
-    checkboxes.forEach((cb) => (cb.disabled = false));
+    checkboxes.forEach((cb) => (cb.disabled = true));
     checkboxes.forEach((cb, i) => {
-      if (i + 1 > charTypes) cb.disabled = true;
+      if (charTypes.includes(i)) cb.disabled = false;
     });
   }
 
@@ -69,11 +70,6 @@ radioContainer.addEventListener("click", function (e) {
   if (e.target.type === "radio") {
     checkboxes.forEach((el) => (el.checked = false));
     checkboxes.forEach((el, i) => (el.checked = selectedValues.includes(i)));
-
-    charGroupsToUse = calcCharGroupsToUse();
-    disableCbox(charGroupsToUse);
+    disableCbox(calcCharGroupsToUse());
   }
-  //   updatePassword();
 });
-
-
