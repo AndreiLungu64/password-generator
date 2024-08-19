@@ -6,7 +6,7 @@ const checkboxContainer = document.querySelectorAll(".settings")[1];
 const radios = document.querySelectorAll('input[type="radio"]');
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 let paswordLength = 0;
-let charGroupsToUse = [];
+let charGroupsToUse = [0, 1, 2, 3];
 
 function updateRangeBackground() {
   const value = ((rangeInput.value - rangeInput.min) / (rangeInput.max - rangeInput.min)) * 100;
@@ -18,7 +18,7 @@ function initialise() {
   charLenLabel.innerText = rangeInput.value;
   radios[radios.length - 1].checked = true;
   checkboxes.forEach((el) => (el.checked = true));
-  passOutput.value = generatePassword(8, [0, 1, 2]);
+  passOutput.value = generatePassword(8, charGroupsToUse);
 }
 initialise();
 
@@ -43,22 +43,23 @@ function generatePassword(len, charTypes) {
 }
 
 function updatePassword() {
-    paswordLength = rangeInput.value;
-    charLenLabel.innerText = paswordLength;
-    passOutput.value = generatePassword(paswordLength, calcCharGroupsToUse());
-  }
+  paswordLength = rangeInput.value;
+  charLenLabel.innerText = paswordLength;
+  passOutput.value = generatePassword(paswordLength, calcCharGroupsToUse());
+}
 
-function calcCharGroupsToUse(){
-    console.log(Array.from(checkboxes).map((cb, i) => cb.checked ? i : -1).filter(i => i != -1));
-    return Array.from(checkboxes).map((cb, i) => cb.checked ? i : -1).filter(i => i != -1);
+function calcCharGroupsToUse() {
+  return Array.from(checkboxes)
+    .map((cb, i) => (cb.checked ? i : -1))
+    .filter((i) => i != -1);
 }
 
 function disableCbox(charTypes) {
-    checkboxes.forEach((cb) => (cb.disabled = true));
-    checkboxes.forEach((cb, i) => {
-      if (charTypes.includes(i)) cb.disabled = false;
-    });
-  }
+  checkboxes.forEach((cb) => (cb.disabled = true));
+  checkboxes.forEach((cb, i) => {
+    if (charTypes.includes(i)) cb.disabled = false;
+  });
+}
 
 rangeInput.addEventListener("input", function () {
   updateRangeBackground();
@@ -71,5 +72,18 @@ radioContainer.addEventListener("click", function (e) {
     checkboxes.forEach((el) => (el.checked = false));
     checkboxes.forEach((el, i) => (el.checked = selectedValues.includes(i)));
     disableCbox(calcCharGroupsToUse());
+    updatePassword();
+  }
+});
+
+checkboxContainer.addEventListener("click", function (e) {
+  if (e.target.type === "checkbox") {
+    if (e.target.checked) charGroupsToUse.push(Number(e.target.value));
+    else charGroupsToUse.splice(charGroupsToUse.indexOf(Number(e.target.value)), 1);
+
+    console.log(charGroupsToUse);
+    if (charGroupsToUse.length === 1) Array.from(checkboxes)[charGroupsToUse[0]].disabled = true;
+    else Array.from(checkboxes).forEach((cb) => (cb.disabled = false));
+    updatePassword();
   }
 });
