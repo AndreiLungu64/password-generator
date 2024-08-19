@@ -5,6 +5,15 @@ const radioContainer = document.querySelectorAll(".settings")[0];
 const checkboxContainer = document.querySelectorAll(".settings")[1];
 const radios = document.querySelectorAll('input[type="radio"]');
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const generatePassBtn = document.querySelector(".action-btns-container").firstElementChild;
+const coppyPassBtn = document.querySelector(".action-btns-container").lastElementChild;
+const passField = document.querySelector(".pass-output");
+const strengthBar = document.querySelector(".strength-bar");
+const bruteBar = document.querySelector(".brute-bar");
+
+console.log(generatePassBtn);
+console.log(coppyPassBtn);
+
 let paswordLength = 0;
 let charGroupsToUse = [0, 1, 2, 3];
 
@@ -15,10 +24,11 @@ function updateRangeBackground() {
 updateRangeBackground();
 
 function initialise() {
-  charLenLabel.innerText = rangeInput.value;
+  charLenLabel.textContent = rangeInput.value;
   radios[radios.length - 1].checked = true;
   checkboxes.forEach((el) => (el.checked = true));
   passOutput.value = generatePassword(8, charGroupsToUse);
+  updateSecurityColor(8);
 }
 initialise();
 
@@ -42,14 +52,34 @@ function generatePassword(len, charTypes) {
   return password;
 }
 
+function updateSecurityColor(passLen) {
+  const securityLevels = [
+    { maxLen: 6, strength: "Very Weak", time: "Seconds to minutes", color: "#F88970" },
+    { maxLen: 10, strength: "Weak", time: "Hours to days", color: "#F8B170" },
+    { maxLen: 13, strength: "Good", time: "Months to years", color: "#F5F870" },
+    { maxLen: 18, strength: "Strong", time: "Centuries", color: "#9CF870" },
+    { maxLen: Infinity, strength: "Very Strong", time: "Many centuries", color: "#70F8CF" },
+  ];
+
+  const level = securityLevels.find((level) => passLen <= level.maxLen);
+
+  strengthBar.lastElementChild.textContent = level.strength;
+  bruteBar.lastElementChild.textContent = level.time;
+  strengthBar.style.backgroundColor = level.color;
+  bruteBar.style.backgroundColor = level.color;
+}
+
 function updatePassword() {
   paswordLength = rangeInput.value;
-  charLenLabel.innerText = paswordLength;
+  charLenLabel.textContent = paswordLength;
   passOutput.value = generatePassword(paswordLength, calcCharGroupsToUse());
+  updateSecurityColor(Number(paswordLength));
 }
 
 function calcCharGroupsToUse() {
-  return Array.from(checkboxes).map((cb, i) => (cb.checked ? i : -1)).filter((i) => i != -1);
+  return Array.from(checkboxes)
+    .map((cb, i) => (cb.checked ? i : -1))
+    .filter((i) => i != -1);
 }
 
 function disableCbox(charTypes) {
@@ -76,13 +106,17 @@ radioContainer.addEventListener("click", function (e) {
 });
 
 checkboxContainer.addEventListener("click", function (e) {
-    if (e.target.type === "checkbox") {
-      if (e.target.checked) charGroupsToUse.push(Number(e.target.value));
-      else charGroupsToUse.splice(charGroupsToUse.indexOf(Number(e.target.value)), 1);
-  
-      console.log(charGroupsToUse);
-      if (charGroupsToUse.length === 1) Array.from(checkboxes)[charGroupsToUse[0]].disabled = true;
-      else Array.from(checkboxes).forEach((cb) => (cb.disabled = false));
-      updatePassword();
-    }
-  });
+  if (e.target.type === "checkbox") {
+    if (e.target.checked) charGroupsToUse.push(Number(e.target.value));
+    else charGroupsToUse.splice(charGroupsToUse.indexOf(Number(e.target.value)), 1);
+
+    if (charGroupsToUse.length === 1) Array.from(checkboxes)[charGroupsToUse[0]].disabled = true;
+    else Array.from(checkboxes).forEach((cb) => (cb.disabled = false));
+    updatePassword();
+  }
+});
+
+generatePassBtn.addEventListener("click", updatePassword);
+coppyPassBtn.addEventListener("click", function () {
+  navigator.clipboard.writeText(passField.value);
+});

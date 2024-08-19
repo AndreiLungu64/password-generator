@@ -78,11 +78,17 @@ html {
 input[type="text"]{
     font-size: 1.3rem;
     font-family: "Inter", sans-serif;
+    outline: none;
 }
 
 .action-btns-container {
   white-space: nowrap;
   margin-right: 1rem;
+}
+
+.action-btns-container > svg{
+    user-select: none;
+    cursor: pointer;
 }
 
 .pass-hist-title {
@@ -331,6 +337,26 @@ input[type="checkbox"]:checked::before {
   font-weight: bold;
   font-family: "Inter", sans-serif;
   font-size: 1rem;
+}
+
+.stats-color-very-strong{
+    background-color: #83EEA8;
+}
+
+.stats-color-strong{
+    background-color: #9CF087;
+}
+
+.stats-color-good{
+    background-color: #CFF087;
+}
+
+.stats-color-weak{
+    background-color: #F4C57F;
+}
+
+.stats-color-very-weak{
+    background-color: #F4947F;
 }
 
 .guide-text {
