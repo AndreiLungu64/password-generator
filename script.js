@@ -12,6 +12,8 @@ const strengthBar = document.querySelector(".strength-bar");
 const bruteBar = document.querySelector(".brute-bar");
 const passList = document.querySelector(".pass-list");
 const dateList = document.querySelector(".date-list");
+const streList = document.querySelector(".stre-list");
+const passListContainer = document.querySelector(".pass-list");
 
 let paswordLength = 0;
 let charGroupsToUse = [0, 1, 2, 3];
@@ -121,18 +123,24 @@ checkboxContainer.addEventListener("click", function (e) {
 });
 
 function addToHistoryList() {
-  console.log(currentPassword);
-  const passLi = document.createElement("li");
+  const passLi = `<div class = "list-item" >
+  <svg class = "history-coppy-btn" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 256 256"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path></svg> 
+  <li>${currentPassword}</li> </div>`;
+  passList.insertAdjacentHTML("beforeend", passLi);
+
+  const streLi = document.createElement("li");
+  streLi.textContent = strengthBar.lastElementChild.textContent;
+  streList.appendChild(streLi);
+
   const dateLi = document.createElement("li");
-  passLi.textContent = currentPassword;
   const date = new Date();
   const options = {
     hour: "numeric",
     minute: "numeric",
   };
+
   dateLi.innerHTML = new Intl.DateTimeFormat("en-US", options).format(date);
   dateList.appendChild(dateLi);
-  passList.appendChild(passLi);
 }
 
 generatePassBtn.addEventListener("click", function () {
@@ -142,4 +150,10 @@ generatePassBtn.addEventListener("click", function () {
 coppyPassBtn.addEventListener("click", function () {
   navigator.clipboard.writeText(passField.value);
   addToHistoryList();
+});
+
+passListContainer.addEventListener("click", function (e) {
+  if (e.target.classList.contains("history-coppy-btn")) {
+    navigator.clipboard.writeText(e.target.nextElementSibling.textContent);
+  }
 });

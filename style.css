@@ -35,7 +35,7 @@ html {
   border-radius: 0.4rem;
   height: 550px;
   display: flex;
-  justify-content: center;
+
   padding: 2rem;
 }
 
@@ -43,12 +43,13 @@ html {
   max-width: 600px;
   align-items: center;
   flex-flow: column nowrap;
+  justify-content: center;
 }
 
 .pass-hist-card {
+  flex-direction: column;
   max-width: 380px;
   min-width: fit-content;
-  align-items: flex-start;
   overflow-y: scroll;
 }
 
@@ -97,12 +98,18 @@ input[type="text"] {
   margin-bottom: 1rem;
 }
 
+.lists-container{
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
 .hist-list-container {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-flow: row nowrap;
-  gap: 3rem;
+  gap: auto;
 }
 
 .title {
@@ -136,11 +143,16 @@ input[type="text"] {
 }
 
 .pass-date-list li {
-  max-width: 10rem;
+  max-width: 4rem;
   overflow-y: auto;
   white-space: nowrap;
   width: fit-content;
   padding: 0;
+}
+
+.pass-hist-subt-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 ::-webkit-scrollbar {
@@ -355,6 +367,21 @@ input[type="checkbox"]:checked::before {
   color: white;
   text-align: center;
   width: 100%;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.list-item:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.list-item > svg {
+  margin-right: 0.5rem;
+  cursor: pointer;
 }
 
 .disclaimer {
