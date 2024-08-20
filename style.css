@@ -98,10 +98,10 @@ input[type="text"] {
   margin-bottom: 1rem;
 }
 
-.lists-container{
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
+.lists-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
 }
 
 .hist-list-container {
@@ -141,13 +141,16 @@ input[type="text"] {
 .pass-date-list li:not(:last-child) {
   margin-bottom: 1.1rem;
 }
-
+/* TODO fix extra padding between the 3 lists*/
 .pass-date-list li {
   max-width: 4rem;
   overflow-y: auto;
   white-space: nowrap;
   width: fit-content;
-  padding: 0;
+}
+
+.stre-list li {
+  max-width: fit-content;
 }
 
 .pass-hist-subt-container {
@@ -369,19 +372,22 @@ input[type="checkbox"]:checked::before {
   width: 100%;
 }
 
+ /*??*/
 .list-item {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .list-item:not(:last-child) {
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
 }
 
 .list-item > svg {
   margin-right: 0.5rem;
   cursor: pointer;
+  display: inline-block;
 }
 
 .disclaimer {
