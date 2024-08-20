@@ -10,10 +10,7 @@ const coppyPassBtn = document.querySelector(".action-btns-container").lastElemen
 const passField = document.querySelector(".pass-output");
 const strengthBar = document.querySelector(".strength-bar");
 const bruteBar = document.querySelector(".brute-bar");
-const passList = document.querySelector(".pass-list");
-const dateList = document.querySelector(".date-list");
-const streList = document.querySelector(".stre-list");
-const passListContainer = document.querySelector(".pass-list");
+const histList = document.querySelector(".history-list");
 
 let paswordLength = 0;
 let charGroupsToUse = [0, 1, 2, 3];
@@ -122,27 +119,46 @@ checkboxContainer.addEventListener("click", function (e) {
   }
 });
 
+//TODO; //Refactor this function so all 3 elements + del button are part of the same list item
+// function addToHistoryList() {
+//   const passLi = `<div class = "list-item" >
+//   <svg class = "history-coppy-btn" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffffff" viewBox="0 0 256 256"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path></svg>
+//   <li>${currentPassword}</li> </div>`;
+
+//   passList.insertAdjacentHTML("beforeend", passLi);
+
+//   const streLi = document.createElement("li");
+//   streLi.textContent = strengthBar.lastElementChild.textContent;
+//   streList.appendChild(streLi);
+
+//   const dateLi = document.createElement("li");
+//   const date = new Date();
+//   const options = {
+//     hour: "numeric",
+//     minute: "numeric",
+//   };
+
+//   dateLi.innerHTML = new Intl.DateTimeFormat("en-US", options).format(date);
+//   dateList.appendChild(dateLi);
+// }
+
 function addToHistoryList() {
-  const passLi = `<div class = "list-item" >
-  <svg class = "history-coppy-btn" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffffff" viewBox="0 0 256 256"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path></svg> 
-  <li>${currentPassword}</li> </div>`;
-
-
-  passList.insertAdjacentHTML("beforeend", passLi);
-
-  const streLi = document.createElement("li");
-  streLi.textContent = strengthBar.lastElementChild.textContent;
-  streList.appendChild(streLi);
-
-  const dateLi = document.createElement("li");
   const date = new Date();
   const options = {
     hour: "numeric",
     minute: "numeric",
   };
+  const now = new Intl.DateTimeFormat("en-US", options).format(date);
+  const listLitem = `
+  <div class="list-item">
+        <svg class="history-coppy-btn" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 256 256"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path></svg> 
+        <p class="pass-hist-value">${currentPassword}<p>
+        <p>${strengthBar.lastElementChild.textContent}<p>
+        <p>${now}</p>
+        <svg class = "history-delete-btn" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+    </div>`;
 
-  dateLi.innerHTML = new Intl.DateTimeFormat("en-US", options).format(date);
-  dateList.appendChild(dateLi);
+  histList.insertAdjacentHTML("beforeend", listLitem);
 }
 
 generatePassBtn.addEventListener("click", function () {
@@ -154,8 +170,11 @@ coppyPassBtn.addEventListener("click", function () {
   addToHistoryList();
 });
 
-passListContainer.addEventListener("click", function (e) {
+histList.addEventListener("click", function (e) {
+    console.log(e.target.classList);
   if (e.target.classList.contains("history-coppy-btn")) {
     navigator.clipboard.writeText(e.target.nextElementSibling.textContent);
+  } else if (e.target.classList.contains("history-delete-btn")) {
+    e.target.parentElement.remove();
   }
 });
