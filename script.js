@@ -11,6 +11,7 @@ const passField = document.querySelector(".pass-output");
 const strengthBar = document.querySelector(".strength-bar");
 const bruteBar = document.querySelector(".brute-bar");
 const histList = document.querySelector(".pass-hist-list-container");
+const observerRoot = document.querySelector(".five-cells-grid");
 
 let paswordLength = 0;
 let charGroupsToUse = [0, 1, 2, 3];
