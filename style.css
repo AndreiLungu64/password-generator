@@ -27,7 +27,6 @@ html {
   gap: 2rem;
 }
 
-/* TODO fix layout proportions and responsiveness*/
 .card {
   box-sizing: border-box;
   flex: 1 1 auto;
@@ -105,6 +104,13 @@ input[type="text"] {
   margin: 0;
   margin-bottom: 1rem;
   margin-top: 2rem;
+}
+
+.stiky-label {
+  background-color: #24232b;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .title {
@@ -382,12 +388,4 @@ input[type="checkbox"]:checked::before {
   html {
     zoom: 0.86;
   }
-}
-
-.stiky-label {
-  position: sticky;
-  background-color: #24232b;
-  top: 0;
-  padding: 10px 0;
-  z-index: 1;
 }

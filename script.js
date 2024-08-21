@@ -55,7 +55,6 @@ function generatePassword(len, charTypes) {
   return password;
 }
 
-//TODO  updateSecurityColor() is called by itslef and also inside updatePassword(). Call it separately each time for better readability
 function updateSecurityColor(passLen) {
   const securityLevels = [
     { maxLen: 6, strength: "Very Weak", time: "Seconds to minutes", color: "#F88970" },
@@ -77,7 +76,6 @@ function updatePassword() {
   paswordLength = rangeInput.value;
   charLenLabel.textContent = paswordLength;
   passOutput.value = generatePassword(paswordLength, calcCharGroupsToUse());
-  updateSecurityColor(Number(paswordLength));
 }
 
 function calcCharGroupsToUse() {
@@ -96,6 +94,7 @@ function disableCbox(charTypes) {
 rangeInput.addEventListener("input", function () {
   updateRangeBackground();
   updatePassword();
+  updateSecurityColor(Number(rangeInput.value));
 });
 
 radioContainer.addEventListener("click", function (e) {
@@ -106,6 +105,7 @@ radioContainer.addEventListener("click", function (e) {
     charGroupsToUse = calcCharGroupsToUse();
     disableCbox(charGroupsToUse);
     updatePassword();
+    updateSecurityColor(Number(rangeInput.value));
   }
 });
 
@@ -117,6 +117,7 @@ checkboxContainer.addEventListener("click", function (e) {
     if (charGroupsToUse.length === 1) Array.from(checkboxes)[charGroupsToUse[0]].disabled = true;
     else Array.from(checkboxes).forEach((cb) => (cb.disabled = false));
     updatePassword();
+    updateSecurityColor(Number(rangeInput.value));
   }
 });
 
@@ -142,6 +143,7 @@ function addToHistoryList() {
 
 generatePassBtn.addEventListener("click", function () {
   updatePassword();
+  updateSecurityColor(Number(rangeInput.value));
 });
 
 coppyPassBtn.addEventListener("click", function () {
