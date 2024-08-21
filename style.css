@@ -85,13 +85,30 @@ input[type="text"] {
 }
 
 .action-btns-container {
-  white-space: nowrap;
+  display: flex;
   margin-right: 1rem;
 }
 
 .action-btns-container > svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.action-btn {
+  background-color: transparent;
+  border: transparent;
+  padding: 0.5rem;
   user-select: none;
   cursor: pointer;
+  border-radius: 10%;
+}
+
+.action-btn:hover {
+  background-color: #a5cccc;
+}
+
+.action-btn:active {
+  transform: translateY(2px);
 }
 
 .pass-hist-title {
@@ -148,6 +165,15 @@ input[type="text"] {
 
 .pass-sub-elem {
   overflow: scroll;
+}
+
+.history-btn{
+    background-color: transparent;
+    border: none;
+}
+
+.fade{
+    opacity: 0.3;
 }
 
 .history-delete-btn {
@@ -256,6 +282,7 @@ input[type="radio"] {
   transform: translateY(-0.6rem);
   display: grid;
   place-content: center;
+  cursor: pointer;
 }
 
 input[type="radio"]::before {
@@ -288,6 +315,7 @@ div label {
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   margin-left: 0.45rem;
+  cursor: pointer;
 }
 /* //////////////////////////////////////////////// */
 
@@ -304,6 +332,7 @@ input[type="checkbox"] {
   transform: translateY(-0.6rem);
   display: grid;
   place-content: center;
+  cursor: pointer;
 }
 
 input[type="checkbox"]::before {
