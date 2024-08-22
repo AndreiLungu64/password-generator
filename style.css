@@ -70,14 +70,6 @@ html {
   margin: 0 1rem;
 }
 
-.history-coppy-btn {
-  cursor: pointer;
-}
-
-.history-delete-btn {
-  cursor: pointer;
-}
-
 input[type="text"] {
   font-size: 1.3rem;
   font-family: "Inter", sans-serif;
@@ -148,7 +140,7 @@ input[type="text"] {
 
 .five-cells-grid {
   display: grid;
-  grid-template-columns: 2.25rem repeat(2, 6rem) 4rem 2.25rem;
+  grid-template-columns: 2.25rem repeat(2, 6rem) 3.2rem 2.25rem;
   grid-template-rows: 1fr;
   align-items: center;
   justify-items: start;
@@ -167,17 +159,30 @@ input[type="text"] {
   overflow: scroll;
 }
 
-.history-btn{
-    background-color: transparent;
-    border: none;
+.fade {
+  opacity: 0.3;
 }
 
-.fade{
-    opacity: 0.3;
+.history-btn {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  background-repeat: no-repeat;
+
+  padding: 10px;
+  background-size: 20px 20px;
+}
+
+.history-coppy-btn {
+  background-image: url("./img/copy.svg");
+  background-position: left;
+  justify-self: flex-start;
 }
 
 .history-delete-btn {
-  justify-self: end;
+  background-image: url("./img/trash.svg");
+  background-position: right;
+  justify-self: flex-end;
 }
 
 ::-webkit-scrollbar {
