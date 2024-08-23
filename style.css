@@ -29,13 +29,11 @@ html {
 
 .card {
   box-sizing: border-box;
-  flex: 1 1 auto;
   background-color: #24232b;
-  border-radius: 0.4rem;
-  /* height: 540px; */
-  height: 530px;
-  /* height: fit-content; */
   display: flex;
+  flex: 1 1 auto;
+  border-radius: 0.4rem;
+  height: 530px;
   padding: 2rem;
   padding-top: 0;
 }
@@ -84,14 +82,9 @@ input[type="text"] {
   margin-right: 1rem;
 }
 
-.action-btns-container > svg {
-  width: 2rem;
-  height: 2rem;
-}
-
 .action-btn {
   background-color: transparent;
-  border: transparent;
+  border: none;
   padding: 0.5rem;
   user-select: none;
   cursor: pointer;
@@ -262,10 +255,6 @@ input[type="checkbox"]:checked::before {
 }
 /* //////////////////////////////////////////////// */
 
-.pass-settings > .settings-inputs-container:nth-child(3) {
-  margin-top: 1.8rem;
-}
-
 .settings-inputs-container {
   display: flex;
   width: 100%;
@@ -314,7 +303,6 @@ input[type="checkbox"]:checked::before {
   font-size: 0.65rem;
   color: white;
   text-align: center;
-  width: 100%;
 }
 
 .pass-hist-title {
@@ -356,6 +344,7 @@ input[type="checkbox"]:checked::before {
 .pass-hist-list-container {
   display: flex;
   flex-direction: column;
+  width: fit-content;
 }
 
 .five-cells-grid {
@@ -425,7 +414,7 @@ input[type="checkbox"]:checked::before {
 
 /*Tablet - 768px to 991px*/
 @media screen and (max-width: 991px) {
-  .parent-container {
+  .page-parent-container {
     flex-direction: column;
   }
 

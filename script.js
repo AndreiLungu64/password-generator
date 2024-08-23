@@ -159,10 +159,7 @@ histList.addEventListener("click", function (e) {
       e.target.classList.remove("fade");
     }, "600");
   } else if (e.target.classList.contains("history-delete-btn")) {
-    e.target.parentElement.parentElement.insertAdjacentHTML("beforeend", semanticMessage);
-    e.target.parentElement.remove();
-    setTimeout(() => {
-      e.target.parentElement.closest(".semantic-message-container").remove(); //finish this -> find the selector to add hidden to  TODO
-    }, "600");
+    e.target.parentElement.insertBefore(semanticMessage, e.target.parentElement);
+    e.target.parentElement.remove(); 
   }
 });
