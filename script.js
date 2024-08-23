@@ -150,7 +150,7 @@ coppyPassBtn.addEventListener("click", function () {
   addToHistoryList();
 });
 
-const semanticMessage = '<div class ="semantic-message-container"><p class ="semantic-message">This item was deleted</p></div>';
+const semanticMessageHTML = '<div class ="semantic-message-container"><p class ="semantic-message">This item was deleted.</p></div>';
 histList.addEventListener("click", function (e) {
   if (e.target.classList.contains("history-coppy-btn")) {
     navigator.clipboard.writeText(e.target.nextElementSibling.textContent);
@@ -159,7 +159,13 @@ histList.addEventListener("click", function (e) {
       e.target.classList.remove("fade");
     }, "600");
   } else if (e.target.classList.contains("history-delete-btn")) {
-    e.target.parentElement.insertBefore(semanticMessage, e.target.parentElement);
-    e.target.parentElement.remove(); 
+    const messageToDelete = e.target.parentElement;
+    const parentContainer = messageToDelete.parentElement;
+    messageToDelete.insertAdjacentHTML("beforebegin", semanticMessageHTML);
+    const semanticMessage = messageToDelete.previousElementSibling;
+    messageToDelete.remove();
+    setTimeout(() => {
+      semanticMessage.remove();
+    }, 700);
   }
 });
