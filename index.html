@@ -48,9 +48,9 @@
                         <p id="pass-len-value" class="pass-len">0</p>
                     </div>
                     <input type="range" min="1" max="50" value="8" id="myRange">
-                    <div class="settings">
+                    <div class="settings-inputs-container">
                         <div>
-                            <input class="radio-style" type="radio" id="toSay" name="pass-format" value="2">
+                            <input type="radio" id="toSay" name="pass-format" value="2">
                             <label for="toSay">Easy to say</label>
                         </div>
                         <div>
@@ -62,8 +62,8 @@
                             <label for="all">All characters</label>
                         </div>
                     </div>
-                    <!-- Refactored till here-->
-                    <div class="settings">
+
+                    <div class="settings-inputs-container">
                         <div>
                             <input type="checkbox" id="lower" name="charGroup" value="0">
                             <label for="lower">Lowercase</label>
@@ -81,8 +81,8 @@
                             <label for="symbols">Symbols</label>
                         </div>
                     </div>
-
                 </section>
+
                 <section class="pass-stats-container">
                     <div class="stats-bar  strength-bar">
                         <p class="stats-text">Strength:</p>
@@ -97,6 +97,7 @@
                     guess a password by trying every possible combination. The complexity and length of the password
                     directly influence this duration.</p>
             </div>
+            <!-- Refactored till here-->
             <div class="card pass-hist-card">
                 <div class="stiky-label">
                     <h2 class="pass-hist-title">Password History</h2>
@@ -104,9 +105,9 @@
                 <div class="pass-hist-list-container">
                     <div class="five-cells-grid">
                         <div></div>
-                        <p class="pass-title title">Password</p>
-                        <p class="pass-title title ">Strength</p>
-                        <p class="pass-title title">Hour</p>
+                        <p class="category-subtitle">Password</p>
+                        <p class="category-subtitle">Strength</p>
+                        <p class="category-subtitle">Hour</p>
                         <div></div>
                     </div>
                 </div>
