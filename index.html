@@ -16,13 +16,13 @@
 
 <body>
     <main>
-        <section>
+        <header>
             <h1 class="page-title">Random Password Generator</h1>
-        </section>
-        <section class="parent-container">
-            <div class="pass-gen-card card">
-                <div id="pass-field">
-                    <input type="text" class="pass-output">
+        </header>
+        <section class="page-parent-container">
+            <div class="card pass-gen-card">
+                <div class="pass-output-container">
+                    <input type="text" class="pass-output-field">
                     <div class="action-btns-container">
                         <button class="action-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000"
@@ -42,14 +42,12 @@
                         </button>
                     </div>
                 </div>
-                <section class="pass-settings">
-                    <div class="pass-len-text-container">
-                        <p class="char-len">Character Length</p>
-                        <p id="char-len-value" class="char-len">0</p>
+                <section class="pass-settings-container">
+                    <div class="pass-len-container">
+                        <p class="pass-len">Character Length</p>
+                        <p id="pass-len-value" class="pass-len">0</p>
                     </div>
-                    <div class="slidecontainer">
-                        <input type="range" min="1" max="50" value="8" id="myRange">
-                    </div>
+                    <input type="range" min="1" max="50" value="8" id="myRange">
                     <div class="settings">
                         <div>
                             <input class="radio-style" type="radio" id="toSay" name="pass-format" value="2">
@@ -64,7 +62,7 @@
                             <label for="all">All characters</label>
                         </div>
                     </div>
-
+                    <!-- Refactored till here-->
                     <div class="settings">
                         <div>
                             <input type="checkbox" id="lower" name="charGroup" value="0">
@@ -85,7 +83,7 @@
                     </div>
 
                 </section>
-                <section class="pass-stats">
+                <section class="pass-stats-container">
                     <div class="stats-bar  strength-bar">
                         <p class="stats-text">Strength:</p>
                         <p class="stats-text">strong</p>
@@ -99,7 +97,7 @@
                     guess a password by trying every possible combination. The complexity and length of the password
                     directly influence this duration.</p>
             </div>
-            <div class="pass-hist-card card">
+            <div class="card pass-hist-card">
                 <div class="stiky-label">
                     <h2 class="pass-hist-title">Password History</h2>
                 </div>

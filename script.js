@@ -1,13 +1,12 @@
 const rangeInput = document.querySelector('input[type="range"]');
-const charLenLabel = document.querySelector("#char-len-value");
-const passOutput = document.querySelector(".pass-output");
+const charLenLabel = document.querySelector("#pass-len-value");
+const passOutputField = document.querySelector(".pass-output-field");
 const radioContainer = document.querySelectorAll(".settings")[0];
 const checkboxContainer = document.querySelectorAll(".settings")[1];
 const radios = document.querySelectorAll('input[type="radio"]');
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 const generatePassBtn = document.querySelector(".action-btns-container").firstElementChild;
 const coppyPassBtn = document.querySelector(".action-btns-container").lastElementChild;
-const passField = document.querySelector(".pass-output");
 const strengthBar = document.querySelector(".strength-bar");
 const bruteBar = document.querySelector(".brute-bar");
 const histList = document.querySelector(".pass-hist-list-container");
@@ -28,7 +27,7 @@ function initialise() {
   charLenLabel.textContent = rangeInput.value;
   radios[radios.length - 1].checked = true;
   checkboxes.forEach((el) => (el.checked = true));
-  passOutput.value = generatePassword(8, charGroupsToUse);
+  passOutputField.value = generatePassword(8, charGroupsToUse);
   updateSecurityColor(8);
 }
 initialise();
@@ -75,7 +74,7 @@ function updateSecurityColor(passLen) {
 function updatePassword() {
   paswordLength = rangeInput.value;
   charLenLabel.textContent = paswordLength;
-  passOutput.value = generatePassword(paswordLength, calcCharGroupsToUse());
+  passOutputField.value = generatePassword(paswordLength, calcCharGroupsToUse());
 }
 
 function calcCharGroupsToUse() {
@@ -147,12 +146,12 @@ generatePassBtn.addEventListener("click", function () {
 });
 
 coppyPassBtn.addEventListener("click", function () {
-  navigator.clipboard.writeText(passField.value);
+  navigator.clipboard.writeText(passOutputField.value);
   addToHistoryList();
 });
 
+const semanticMessage = '<div class ="semantic-message-container"><p class ="semantic-message">This item was deleted</p></div>';
 histList.addEventListener("click", function (e) {
-  console.log(e.target);
   if (e.target.classList.contains("history-coppy-btn")) {
     navigator.clipboard.writeText(e.target.nextElementSibling.textContent);
     e.target.classList.add("fade");
@@ -160,6 +159,10 @@ histList.addEventListener("click", function (e) {
       e.target.classList.remove("fade");
     }, "600");
   } else if (e.target.classList.contains("history-delete-btn")) {
+    e.target.parentElement.parentElement.insertAdjacentHTML("beforeend", semanticMessage);
     e.target.parentElement.remove();
+    setTimeout(() => {
+      e.target.parentElement.closest(".semantic-message-container").remove(); //finish this -> find the selector to add hidden to  TODO
+    }, "600");
   }
 });
